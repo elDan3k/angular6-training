@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Book} from './books/model/book.model';
 
 @Component({
   selector: 'app-root',
@@ -6,46 +7,14 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  books = [
-    {
-      id: 1,
-      title: 'Angular in action',
-      authors: 'Jan Kowalski',
-      category: '#00ff00',
-      bestseller: true
-    },
-    {
-      id: 2,
-      title: 'React in action',
-      authors: 'Marek Nowak',
-      category: '#00ff00',
-      bestseller: false
-    }
-  ];
-  titleSize = 24;
+  books: Book[] = [];
 
-  get authorsStyle() {
-    return {
-      color: 'gray',
-      letterSpacing: '2px'
-    };
-  }
-
-  selectedBook = null;
-  editedBook = null;
-
-  select(book) {
-    this.selectedBook = book;
-    this.editedBook = Object.assign({}, book);
-  }
-
-  save() {
-    Object.assign(this.selectedBook, this.editedBook);
-    this.reset();
-  }
-
-  reset() {
-    this.selectedBook = null;
-    this.editedBook = null;
+  constructor() {
+    const book = new Book();
+    book.id = 1;
+    book.title = 'Angular in action';
+    book.authors = 'Jan Kowalski';
+    book.rating = 4;
+    this.books.push(book);
   }
 }

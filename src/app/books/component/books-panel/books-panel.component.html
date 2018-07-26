@@ -1,0 +1,13 @@
+<div class="text-center menu">
+  <button class="btn btn-sm btn-outline-primary" (click)="add()">Add</button>
+  <button class="btn btn-sm btn-outline-primary" (click)="remove()"
+          [disabled]="editedBook === null">Remove</button>
+</div>
+
+<app-book-form *ngIf="editedBook !== null" [book]="editedBook" (cancel)="reset()" (save)="save($event)"></app-book-form>
+
+<div class="row justify-content-around books">
+  <app-book-card *ngFor="let book of books" [book]="book" [isSelected]="book === selectedBook" (bookSelected)="select(book)">
+    <app-rating [rating]="book.rating" book-footer></app-rating>
+  </app-book-card>
+</div>
