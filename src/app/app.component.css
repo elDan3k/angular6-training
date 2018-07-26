@@ -1,0 +1,9 @@
+.hello-message {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.btn-hello {
+  margin: 20px;
+}
