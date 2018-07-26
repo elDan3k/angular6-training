@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {Book} from '../../model/book.model';
 import {BooksService} from '../../service/books.service';
-import {Observable} from "rxjs";
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-books-panel',
@@ -15,6 +15,7 @@ export class BooksPanelComponent {
   selectedBook: Book = null;
   editedBook: Book = null;
   isProcessing = false;
+  subscription: Subscription;
 
   constructor(@Inject('BooksService') private bookService: BooksService) {
     this.refresh();
@@ -54,7 +55,10 @@ export class BooksPanelComponent {
   }
 
   refreshBooks(observable: Observable<Book[]>) {
-    observable.subscribe(
+    if (this.subscription !== null) {
+      this.subscription.unsubscribe();
+    }
+    this.subscription = observable.subscribe(
       books => this.books = books,
       ex => { console.log(ex); this.isProcessing = false; },
       () => this.isProcessing = false
