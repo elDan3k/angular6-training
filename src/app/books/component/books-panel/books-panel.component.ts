@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Book} from '../../model/book.model';
+import {ArrayBooksService} from '../../service/array-books.service';
 
 @Component({
   selector: 'app-books-panel',
@@ -8,10 +9,13 @@ import {Book} from '../../model/book.model';
 })
 export class BooksPanelComponent {
 
-  @Input()
   books: Book[] = [];
   selectedBook: Book = null;
   editedBook: Book = null;
+
+  constructor(private bookService: ArrayBooksService) {
+    this.refresh();
+  }
 
   select(book: Book) {
     this.selectedBook = book;
@@ -20,10 +24,9 @@ export class BooksPanelComponent {
 
   save(book: Book) {
     if (book.id) {
-      Object.assign(this.selectedBook, book);
+      this.bookService.update(book);
     } else {
-      book.id = this.nextId;
-      this.books.push(book);
+      this.bookService.save(book);
     }
     this.reset();
   }
@@ -38,19 +41,12 @@ export class BooksPanelComponent {
   }
 
   remove() {
-    const bookIndex = this.findBookIndex(this.editedBook);
-    if (bookIndex !== -1) {
-      this.books.splice(bookIndex);
-    }
+    this.bookService.remove(this.editedBook.id);
     this.reset();
   }
 
-  private get nextId(): number {
-    return Date.now();
-  }
-
-  private findBookIndex(book: Book): number {
-    return this.books.findIndex(currentBook => book.id === currentBook.id);
+  refresh() {
+    this.books = this.bookService.getAll();
   }
 
 }

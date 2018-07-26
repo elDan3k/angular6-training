@@ -5,6 +5,8 @@ import {SharedModule} from '../shared/shared.module';
 import {BookFormComponent} from './component/book-form/book-form.component';
 import {FormsModule} from '@angular/forms';
 import {BooksPanelComponent} from './component/books-panel/books-panel.component';
+import {ArrayBooksService} from './service/array-books.service';
+import booksData from './model/books.data';
 
 @NgModule({
   imports: [
@@ -16,6 +18,13 @@ import {BooksPanelComponent} from './component/books-panel/books-panel.component
     BookCardComponent,
     BookFormComponent,
     BooksPanelComponent
+  ],
+  providers: [
+    ArrayBooksService,
+    {
+      provide: 'BooksData',
+      useValue: booksData
+    }
   ],
   exports: [
     BooksPanelComponent
