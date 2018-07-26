@@ -1,9 +1,27 @@
-.hello-message {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 50px;
+.selected {
+  color: darkblue;
 }
 
-.btn-hello {
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-book {
   margin: 20px;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.books {
+  margin: 20px;
+}
+
+.card-book {
+  width: 320px;
+  min-height: 400px;
+  border-bottom: 2px solid black;
+  margin-bottom: 30px;
 }
