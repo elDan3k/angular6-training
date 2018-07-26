@@ -1,10 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-
 import {AppComponent} from './app.component';
 import {BooksModule} from './books/books.module';
-
+import {Api} from './api';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,9 @@ import {BooksModule} from './books/books.module';
     BrowserModule,
     BooksModule
   ],
-  providers: [],
+  providers: [
+    Api
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

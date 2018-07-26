@@ -1,19 +1,22 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {Book} from '../../model/book.model';
-import {ArrayBooksService} from '../../service/array-books.service';
+import {BooksService} from '../../service/books.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-books-panel',
   templateUrl: './books-panel.component.html',
   styleUrls: ['./books-panel.component.css']
+  //, providers: []
 })
 export class BooksPanelComponent {
 
   books: Book[] = [];
   selectedBook: Book = null;
   editedBook: Book = null;
+  isProcessing = false;
 
-  constructor(private bookService: ArrayBooksService) {
+  constructor(@Inject('BooksService') private bookService: BooksService) {
     this.refresh();
   }
 
@@ -24,11 +27,16 @@ export class BooksPanelComponent {
 
   save(book: Book) {
     if (book.id) {
-      this.bookService.update(book);
+      this.subscribe(this.bookService.update(book));
     } else {
-      this.bookService.save(book);
+      this.subscribe(this.bookService.save(book));
     }
     this.reset();
+  }
+
+  private subscribe(observable: Observable<any>) {
+    this.isProcessing = true;
+    observable.subscribe(() => this.refresh());
   }
 
   reset() {
@@ -41,12 +49,21 @@ export class BooksPanelComponent {
   }
 
   remove() {
-    this.bookService.remove(this.editedBook.id);
+    this.subscribe(this.bookService.remove(this.editedBook.id));
     this.reset();
   }
 
+  refreshBooks(observable: Observable<Book[]>) {
+    observable.subscribe(
+      books => this.books = books,
+      ex => { console.log(ex); this.isProcessing = false; },
+      () => this.isProcessing = false
+      );
+  }
+
   refresh() {
-    this.books = this.bookService.getAll();
+    this.isProcessing = true;
+    this.refreshBooks(this.bookService.getAll());
   }
 
 }

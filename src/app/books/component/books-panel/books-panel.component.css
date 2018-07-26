@@ -8,6 +8,12 @@
   margin-bottom: 20px;
 }
 
+.indicator {
+  height: 32px;
+  color: blue;
+  font-size: 26px;
+}
+
 .btn {
   margin: 2px;
 }
