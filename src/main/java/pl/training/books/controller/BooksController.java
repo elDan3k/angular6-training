@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import pl.training.books.model.ResultPage;
 import pl.training.books.web.UriBuilder;
 import pl.training.books.dto.PageDto;
-import pl.training.books.mapper.Mapper;
 import pl.training.books.dto.BookDto;
 import pl.training.books.model.Book;
 import pl.training.books.service.BooksService;
+import pl.training.books.mapper.Mapper;
 
 import java.net.URI;
 import java.util.List;
