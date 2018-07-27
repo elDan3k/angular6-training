@@ -1,0 +1,11 @@
+.error-message {
+  color: red;
+}
+
+form {
+  margin-top: 40px;
+}
+
+.login-form {
+  padding: 20px;
+}

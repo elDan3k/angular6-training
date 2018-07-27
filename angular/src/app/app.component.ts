@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {TranslateService} from "@ngx-translate/core";
+import {SecurityService} from './security/service/security.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,12 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class AppComponent {
 
-  constructor(private router: Router, private translateService: TranslateService) {
+  username: string;
+
+  constructor(private router: Router, private translateService: TranslateService, private securityService:SecurityService) {
+    securityService.user.subscribe(user => {
+      this.username = user != null ? user.name : '';
+    });
   }
 
   setLanguage(language: string) {
@@ -20,4 +26,8 @@ export class AppComponent {
     this.router.navigateByUrl("/");
   }
 
+  logout() {
+    this.securityService.logout();
+    this.router.navigateByUrl('login');
+  }
 }

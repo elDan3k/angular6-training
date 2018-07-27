@@ -6,9 +6,12 @@ import {BooksModule} from './books/books.module';
 import {Api} from './api';
 import {routerModule} from './app.routing';
 import {SharedModule} from './shared/shared.module';
-import {HttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader,TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {SecurityModule} from './security/security.module';
+import {SecurityInterceptor} from './security/security.interceptor';
+import {TokenInterceptor} from './security/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     BrowserModule,
     BooksModule,
     SharedModule,
+    SecurityModule,
     routerModule,
     TranslateModule.forRoot({
       loader: {
@@ -28,7 +32,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     })
   ],
   providers: [
-    Api
+    Api,
+    { provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

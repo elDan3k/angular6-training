@@ -4,21 +4,25 @@ import {BooksListComponent} from "./component/books-list/books-list.component";
 import {BookFormComponent} from "./component/book-form/book-form.component";
 import {BookResolver} from "./book.resolver";
 import {environment} from "../../environments/environment";
+import {SecurityGuard} from '../security/security.guard';
 
 const routes: Route[] = [
   {
     path: 'books/dashboard',
-    component: BooksPanelComponent
+    component: BooksPanelComponent,
+    canActivate: [SecurityGuard]
   },
   {
     path: 'books/list',
     component: BooksListComponent,
     data: { env: environment },
+    canActivate: [SecurityGuard],
     children: [
       {
         path: ':id',
         component: BookFormComponent,
-        resolve: { book: BookResolver }
+        resolve: { book: BookResolver },
+        canActivate: [SecurityGuard]
       }
     ]
   },

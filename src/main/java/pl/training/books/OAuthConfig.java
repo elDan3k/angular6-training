@@ -35,7 +35,7 @@ public class OAuthConfig {
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             clients.inMemory()
-                    .withClient("bank")
+                    .withClient("books")
                     .authorizedGrantTypes("password")
                     .scopes("client");
         }

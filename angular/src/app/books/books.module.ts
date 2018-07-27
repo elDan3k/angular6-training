@@ -13,6 +13,7 @@ import {routerModule} from './books.routing';
 import booksData from './model/books.data';
 import {BookResolver} from './book.resolver';
 import {TranslateModule} from '@ngx-translate/core';
+import {SecurityModule} from '../security/security.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {TranslateModule} from '@ngx-translate/core';
     HttpClientModule,
     SharedModule,
     routerModule,
-    TranslateModule
+    TranslateModule,
+    SecurityModule
   ],
   declarations: [
     BookCardComponent,

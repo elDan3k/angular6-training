@@ -1,4 +1,4 @@
-<ul class="nav">
+<ul class="nav" *ngIf="!router.isActive('login') && !router.isActive('/')">
   <li class="nav-item">
     <a class="nav-link" href="#" (click)="home()" routerLinkActive="active">
       <span *appRepeat="3">- </span>
@@ -17,6 +17,9 @@
       <option value="en">En</option>
       <option value="pl">Pl</option>
     </select>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" routerLink="logout" (click)="logout()">Logout {{ username }}</a>
   </li>
 </ul>
 
