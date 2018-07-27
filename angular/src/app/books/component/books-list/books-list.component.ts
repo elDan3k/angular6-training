@@ -1,8 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {Observable} from "rxjs";
-import {Book} from "../../model/book.model";
-import {BooksService} from "../../service/books.service";
-import {ActivatedRoute} from "@angular/router";
+import {Book} from '../../model/book.model';
+import {BooksService} from '../../service/books.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-books-list',
@@ -11,10 +10,11 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class BooksListComponent {
 
-  books: Observable<Book[]>;
+  books: Book[];
 
   constructor(@Inject('BooksService') private booksService: BooksService, route: ActivatedRoute) {
-    this.books = this.booksService.getAll();
+    this.booksService.getAll()
+      .subscribe(booksPage => this.books = booksPage.data)
     console.log(route.snapshot.data.env);
   }
 

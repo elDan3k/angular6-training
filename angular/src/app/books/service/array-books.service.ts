@@ -2,6 +2,7 @@ import { Book } from '../model/book.model';
 import {Inject, Injectable, Optional} from '@angular/core';
 import {BooksService} from './books.service';
 import {Observable, of, EMPTY} from 'rxjs';
+import {ResultPage} from '../../shared/model/result-page';
 
 @Injectable()
 export class ArrayBooksService implements BooksService {
@@ -16,8 +17,10 @@ export class ArrayBooksService implements BooksService {
     throw new Error("Not yet implemented");
   }
 
-  getAll(): Observable<Book[]> {
-    return of(this.books);
+  getAll(): Observable<ResultPage<Book>> {
+    let result = new ResultPage<Book>();
+    result.data = this.books;
+    return of(result);
   }
 
   save(book: Book): Observable<Book> {

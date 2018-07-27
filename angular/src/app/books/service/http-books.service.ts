@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {BooksService} from './books.service';
 import {Book} from '../model/book.model';
 import {Api} from '../../api';
+import {ResultPage} from '../../shared/model/result-page';
 
 @Injectable()
 export class HttpBooksService implements BooksService {
@@ -15,8 +16,8 @@ export class HttpBooksService implements BooksService {
     return this.httpClient.get<Book>(`${this.api.books}/${bookId}`);
   }
 
-  getAll(): Observable<Book[]> {
-    return this.httpClient.get<Book[]>(this.api.books);
+  getAll(): Observable<ResultPage<Book>> {
+    return this.httpClient.get<ResultPage<Book>>(this.api.books);
   }
 
   save(book: Book): Observable<Book> {

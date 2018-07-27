@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {Book} from '../../model/book.model';
 import {BooksService} from '../../service/books.service';
 import {Observable, Subscription} from 'rxjs';
+import {ResultPage} from '../../../shared/model/result-page';
 
 @Component({
   selector: 'app-books-panel',
@@ -54,12 +55,12 @@ export class BooksPanelComponent {
     this.reset();
   }
 
-  refreshBooks(observable: Observable<Book[]>) {
+  refreshBooks(observable: Observable<ResultPage<Book>>) {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
     this.subscription = observable.subscribe(
-      books => this.books = books,
+      booksPage => this.books = booksPage.data,
       ex => { console.log(ex); this.isProcessing = false; },
       () => this.isProcessing = false
       );

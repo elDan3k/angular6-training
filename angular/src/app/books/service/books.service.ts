@@ -1,11 +1,12 @@
 import {Observable} from 'rxjs';
 import {Book} from '../model/book.model';
+import {ResultPage} from '../../shared/model/result-page';
 
 export interface BooksService {
 
   getById(bookId: number): Observable<Book>
 
-  getAll(): Observable<Book[]>
+  getAll(): Observable<ResultPage<Book>>
 
   save(book: Book): Observable<Book>
 
