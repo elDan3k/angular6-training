@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {BooksModule} from './books/books.module';
 import {Api} from './api';
 import {routerModule} from './app.routing';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {routerModule} from './app.routing';
   imports: [
     BrowserModule,
     BooksModule,
+    SharedModule,
     routerModule
   ],
   providers: [

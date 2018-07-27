@@ -1,6 +1,10 @@
 <ul class="nav">
   <li class="nav-item">
-    <a class="nav-link" href="#" (click)="home()" routerLinkActive="active">Home</a>
+    <a class="nav-link" href="#" (click)="home()" routerLinkActive="active">
+      <span *appRepeat="3">- </span>
+      {{ 'books' | capitalize:1 }}
+      <span *appRepeat="3">- </span>
+    </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" routerLink="books/dashboard" routerLinkActive="active">Dashboard</a>
