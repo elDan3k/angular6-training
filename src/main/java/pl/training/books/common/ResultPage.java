@@ -1,4 +1,4 @@
-package pl.training.books.common.aop;
+package pl.training.books.common;
 
 import lombok.*;
 
