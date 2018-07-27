@@ -1,3 +1,15 @@
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="#" (click)="home()" routerLinkActive="active">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="books/dashboard" routerLinkActive="active">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="books/list" routerLinkActive="active">Books list</a>
+  </li>
+</ul>
+
 <div class="container">
-  <app-books-panel></app-books-panel>
+  <router-outlet></router-outlet>
 </div>

@@ -3,6 +3,8 @@ import {Book} from '../model/book.model';
 
 export interface BooksService {
 
+  getById(bookId: number): Observable<Book>
+
   getAll(): Observable<Book[]>
 
   save(book: Book): Observable<Book>

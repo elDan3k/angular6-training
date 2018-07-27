@@ -8,7 +8,10 @@ import {BooksPanelComponent} from './component/books-panel/books-panel.component
 import {HttpBooksService} from './service/http-books.service';
 import {BooksSearchComponent} from './component/books-search/books-search.component';
 import {HttpClientModule} from '@angular/common/http';
+import {BooksListComponent} from './component/books-list/books-list.component';
+import {routerModule} from './books.routing';
 import booksData from './model/books.data';
+import {BookResolver} from './book.resolver';
 
 @NgModule({
   imports: [
@@ -16,13 +19,15 @@ import booksData from './model/books.data';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    routerModule
   ],
   declarations: [
     BookCardComponent,
     BookFormComponent,
     BooksSearchComponent,
-    BooksPanelComponent
+    BooksPanelComponent,
+    BooksListComponent
   ],
   providers: [
     //ArrayBooksService,
@@ -33,7 +38,8 @@ import booksData from './model/books.data';
     {
       provide: 'BooksData',
       useValue: booksData
-    }
+    },
+    BookResolver
     /*
     ,{
       provide: 'BooksService',

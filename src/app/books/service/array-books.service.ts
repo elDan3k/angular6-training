@@ -12,6 +12,10 @@ export class ArrayBooksService implements BooksService {
     }
   }
 
+  getById(bookId: number): Observable<Book> {
+    throw new Error("Not yet implemented");
+  }
+
   getAll(): Observable<Book[]> {
     return of(this.books);
   }
