@@ -15,10 +15,9 @@ public class Book {
     private String title;
     private String authors;
     private String category;
-    private boolean favourite;
+    private boolean bestseller;
     private int rating;
     @Enumerated(EnumType.STRING)
     private Genre genre;
-    private String supportEmail;
 
 }

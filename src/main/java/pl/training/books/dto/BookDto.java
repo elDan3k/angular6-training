@@ -12,9 +12,8 @@ public class BookDto {
     private String title;
     private String authors;
     private String category;
-    private boolean favourite;
+    private boolean bestseller;
     private int rating;
     private GenreDto genre;
-    private String supportEmail;
 
 }
