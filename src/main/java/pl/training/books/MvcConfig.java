@@ -4,8 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import pl.training.books.common.mapper.Mapper;
-import pl.training.books.common.mapper.ModelMapperAdapter;
+import pl.training.books.mapper.Mapper;
+import pl.training.books.mapper.ModelMapperAdapter;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 

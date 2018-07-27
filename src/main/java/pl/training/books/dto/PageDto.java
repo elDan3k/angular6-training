@@ -1,4 +1,4 @@
-package pl.training.books.common.dto;
+package pl.training.books.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

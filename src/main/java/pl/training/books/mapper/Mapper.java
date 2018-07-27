@@ -1,4 +1,4 @@
-package pl.training.books.common.mapper;
+package pl.training.books.mapper;
 
 import java.util.List;
 

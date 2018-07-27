@@ -1,4 +1,4 @@
-package pl.training.books.common;
+package pl.training.books.model;
 
 import lombok.*;
 

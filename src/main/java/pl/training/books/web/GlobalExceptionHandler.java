@@ -1,4 +1,4 @@
-package pl.training.books.common;
+package pl.training.books.web;
 
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import pl.training.books.common.dto.ExceptionDto;
+import pl.training.books.dto.ExceptionDto;
 
 import java.util.Locale;
 
