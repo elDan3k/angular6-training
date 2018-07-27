@@ -1,21 +1,39 @@
-<div class="form-book">
+<form #bookForm="ngForm" class="form-book" novalidate="true" (ngSubmit)="saveBook(bookForm)">
   <h4 class="text-center">Book</h4>
   <div class="form-group">
     <label for="title">Title:</label>
-    <input id="title" class="form-control" placeholder="Enter title" [(ngModel)]="book.title">
+    <input #title="ngModel" id="title" class="form-control" placeholder="Enter title" name="title"
+           [(ngModel)]="book.title" required minlength="3">
+    <app-errors [input]="title"></app-errors>
   </div>
   <div class="form-group">
     <label for="authors">Authors:</label>
-    <input id="authors" class="form-control" placeholder="Enter authors" [(ngModel)]="book.authors">
+    <input id="authors" class="form-control" placeholder="Enter authors" name="authors" [(ngModel)]="book.authors">
+  </div>
+  <div class="form-group">
+    <label>Genre:</label>
+    <select name="genre" class="form-control" [(ngModel)]="book.genre">
+      <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Rating:</label>
+    <span *ngFor="let value of ratings">
+      <label class="custom-control custom-radio">
+        <input type="radio" name="rating" class="custom-control-input" [value]="value" [(ngModel)]="book.rating">
+        <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ value }}</span>
+      </label>
+      </span>
   </div>
   <div class="form-group">
     <label for="category">Category:</label>
-    <input id="category" type="color" [(ngModel)]="book.category">
+    <input id="category" type="color" name="category" [(ngModel)]="book.category">
   </div>
   <div class="form-group">
-    <input id="bestseller" type="checkbox" [(ngModel)]="book.bestseller">
+    <input id="bestseller" type="checkbox" name="bestseller" [(ngModel)]="book.bestseller">
     <label for="bestseller">Bestseller</label>
   </div>
   <button type="button" class="btn btn-danger" (click)="cancel.emit()">Cancel</button>
-  <button type="button" class="btn btn-primary" (click)="save.emit(book)">Save</button>
-</div>
+  <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid">Save</button>
+</form>

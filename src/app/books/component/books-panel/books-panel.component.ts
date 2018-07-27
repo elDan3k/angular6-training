@@ -55,7 +55,7 @@ export class BooksPanelComponent {
   }
 
   refreshBooks(observable: Observable<Book[]>) {
-    if (this.subscription !== null) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
     this.subscription = observable.subscribe(

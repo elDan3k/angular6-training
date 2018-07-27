@@ -14,5 +14,12 @@ export class BookFormComponent {
   save = new EventEmitter();
   @Output()
   cancel = new EventEmitter();
+  genres = ['Horror', 'Adventure', 'Drama', 'Romans'];
+  ratings = [1, 2, 3, 4 ,5];
 
+  saveBook(bookForm) {
+    if (bookForm.valid) {
+      this.save.emit(this.book);
+    }
+  }
 }

@@ -5,4 +5,5 @@ export class Book {
   category: string;
   rating: number;
   bestseller: boolean;
+  genre: [string];
 }
