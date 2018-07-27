@@ -13,13 +13,15 @@ const routes: Route[] = [
   {
     path: 'books/list',
     component: BooksListComponent,
-    data: { env: environment }
+    data: { env: environment },
+    children: [
+      {
+        path: ':id',
+        component: BookFormComponent,
+        resolve: { book: BookResolver }
+      }
+    ]
   },
-  {
-    path: 'books/list/:id',
-    component: BookFormComponent,
-    resolve: { book: BookResolver }
-  }
 ];
 
 export const routerModule = RouterModule.forChild(routes);
