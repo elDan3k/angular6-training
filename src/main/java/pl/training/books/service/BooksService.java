@@ -3,8 +3,8 @@ package pl.training.books.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import pl.training.books.model.ResultPage;
 import pl.training.books.model.Book;
+import pl.training.books.model.ResultPage;
 import pl.training.books.repository.BooksRepository;
 
 @Service
@@ -36,4 +36,7 @@ public class BooksService {
         booksRepository.saveAndFlush(book);
     }
 
+    public void delete(Long id) {
+      booksRepository.delete(id);
+    }
 }

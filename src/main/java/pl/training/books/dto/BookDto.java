@@ -1,9 +1,10 @@
 package pl.training.books.dto;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
-@ApiModel(value = "User")
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "book")
 @Data
 public class BookDto {
 
