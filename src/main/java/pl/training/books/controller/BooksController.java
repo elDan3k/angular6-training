@@ -15,9 +15,7 @@ import pl.training.books.service.BooksService;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Locale;
 
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.noContent;
 
