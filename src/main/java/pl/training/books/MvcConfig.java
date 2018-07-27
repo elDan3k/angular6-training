@@ -25,7 +25,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public Docket productApi() {
         return new Docket(SWAGGER_2)
                 .select()
-                .apis(basePackage("pl.training.bank"))
+                .apis(basePackage("pl.training.books"))
                 .build();
     }
 

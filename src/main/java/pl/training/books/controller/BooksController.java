@@ -48,7 +48,7 @@ public class BooksController {
             @RequestParam(required = false, defaultValue = "0", name = "pageNumber") int pageNumber,
             @RequestParam(required = false, defaultValue = "10", name = "pageSize") int pageSize) {
         ResultPage<Book> resultPage = booksService.getBooks(pageNumber, pageSize);
-        List<BookDto> booksDtos = mapper.map(resultPage.getContent(), BookDto.class);
+        List<BookDto> booksDtos = mapper.map(resultPage.getData(), BookDto.class);
         return new PageDto<>(booksDtos, resultPage.getPageNumber(), resultPage.getTotalPages());
     }
 
