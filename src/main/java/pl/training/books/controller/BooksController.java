@@ -17,7 +17,7 @@ import java.util.List;
 
 import static org.springframework.http.ResponseEntity.noContent;
 
-@RequestMapping(value = "books")
+@RequestMapping(value = "api/v1/books")
 @RestController
 @RequiredArgsConstructor
 public class BooksController {
