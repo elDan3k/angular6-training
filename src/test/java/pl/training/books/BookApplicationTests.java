@@ -1,4 +1,4 @@
-package pl.training.book;
+package pl.training.books;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
