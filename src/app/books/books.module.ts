@@ -12,6 +12,7 @@ import {BooksListComponent} from './component/books-list/books-list.component';
 import {routerModule} from './books.routing';
 import booksData from './model/books.data';
 import {BookResolver} from './book.resolver';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {BookResolver} from './book.resolver';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    routerModule
+    routerModule,
+    TranslateModule
   ],
   declarations: [
     BookCardComponent,
