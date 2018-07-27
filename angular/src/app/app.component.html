@@ -1,4 +1,4 @@
-<ul class="nav" *ngIf="!router.isActive('login') && !router.isActive('/')">
+<ul class="nav" *ngIf="!router.isActive('login')">
   <li class="nav-item">
     <a class="nav-link" href="#" (click)="home()" routerLinkActive="active">
       <span *appRepeat="3">- </span>

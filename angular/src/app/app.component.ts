@@ -28,6 +28,7 @@ export class AppComponent {
 
   logout() {
     this.securityService.logout();
-    this.router.navigateByUrl('login');
+    window.location.hash = '';
+    window.location.reload();
   }
 }

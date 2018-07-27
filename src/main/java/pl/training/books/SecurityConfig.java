@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         userService.addUser(user);
     }
 
+    //StandardPasswordEncoder is not secure any more
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
